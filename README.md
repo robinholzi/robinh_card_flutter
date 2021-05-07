@@ -1,6 +1,6 @@
 # robinh_card
 
-Personal business card in written in flutter for web.
+Personal business card written in flutter for web.
 
 ## Live version
 [robinh.xyz](https://robinh.xyz/) - running on a lightweight docker PHP container.
