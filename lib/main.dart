@@ -224,7 +224,7 @@ class CardItem extends StatelessWidget {
                                     child: Image.asset('assets/profile_picture.jpg')),
                               ),
                             ),
-                            SizedBox(height: 24),
+                            SizedBox(height: 22),
                             Text("Robin Holzinger",
                                 style: TextStyle(
                                     color: darkTheme ? Colors.white : Colors.black,
@@ -232,15 +232,18 @@ class CardItem extends StatelessWidget {
                                     letterSpacing: 3,
                                     fontWeight: darkTheme ? FontWeight.bold : FontWeight.bold,
                                     fontFamily: 'Helvetica')),
+                            SizedBox(height: 16),
+                            PositionWidget(
+                              title: "CS Student",
+                              linkText: "TUM",
+                              href: "https://www.tum.de/",
+                            ),
                             SizedBox(height: 12),
-                            Text("CS Student at TUM",
-                                style: TextStyle(
-                                    color: darkTheme ? Colors.white : Colors.black,
-                                    fontSize: 14,
-                                    letterSpacing: 2,
-                                    fontWeight: darkTheme ? FontWeight.normal : FontWeight.bold,
-                                    fontFamily:
-                                    'Helvetica')), // Source Code Pro
+                            PositionWidget(
+                              title: "Software Engineering Intern",
+                              linkText: "FINN",
+                              href: "https://www.finn.auto/",
+                            ),
                             SizedBox(height: 22),
                             Table(
                               columnWidths: {
@@ -277,6 +280,54 @@ class CardItem extends StatelessWidget {
     return (height < 700) ? card : Expanded(child: card,);
   }
 }
+
+class PositionWidget extends StatelessWidget {
+  PositionWidget({
+    Key? key,
+    this.title = "",
+    this.linkText = "",
+    this.href = "/",
+  }) : super(key: key) {
+    titleStyle = TextStyle(
+        color: darkTheme ? Colors.white : Colors.black,
+        fontSize: 12,
+        letterSpacing: 1,
+        fontWeight: darkTheme ? FontWeight.normal : FontWeight.bold,
+        fontFamily: 'Helvetica'
+    );
+    linkStyle = titleStyle.copyWith(color: Colors.orangeAccent, );
+  }
+
+  late final TextStyle titleStyle, linkStyle;
+  final String? title;
+  final String? linkText;
+  final String? href;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(title ?? "", style: titleStyle),
+        SizedBox(width: 5,),
+        RawMaterialButton(
+          constraints: BoxConstraints(minWidth: 0, minHeight: 0),
+          padding: EdgeInsets.all(0),
+          elevation: 0,
+          materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          splashColor: Colors.transparent,
+          highlightColor: Colors.transparent,
+          hoverColor: Color.fromARGB(0, 0, 0, 0),
+          onPressed: () {
+            htmlOpenLink(href ?? "/");
+          },
+          child: Text(linkText!=null ? ("@ $linkText") : "", style: linkStyle),
+        )
+      ],
+    );
+  }
+}
+
 
 class LinkItem {
   static TableRow makeRow(String title, String linkText, {bool at = false, String url = ''}) {
