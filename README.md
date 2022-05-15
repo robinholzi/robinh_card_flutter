@@ -1,9 +1,12 @@
-# robinh_card
+# robinh_card [DEPRECATED]
+
+[NEW VERSION BASED ON JS/REACT](https://github.com/nerotyc/robinh_card)
 
 Personal business card written in flutter for web.
 
 ## Live version
-[robinh.xyz](https://robinh.xyz/) - running on a lightweight docker PHP container.
+~~[robinh.xyz](https://robinh.xyz/) - running on a lightweight docker PHP container.~~
+[NEW VERSION BASED ON JS/REACT](https://github.com/nerotyc/robinh_card)
 
 ## Starting the web application
 
